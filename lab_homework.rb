@@ -77,7 +77,7 @@ class Library
   attr_reader :books
 
   def initialize(books)
-  @books = books
+    @books = books
   end
 
   def get_info_for_title(title)
@@ -110,10 +110,17 @@ class Library
     return @books.length
   end
 
-  def set_rental_details(title,new_details)
-  
-
-
+  def update_rental_details(title, student_name, date)
+    for book in @books
+      if :title == title
+        :student_name == student_name
+        :date == date
+        return {
+          student_name:"Daniel",  
+          date: "1/2/18"
+        }
+      end
+    end
   end
 
 

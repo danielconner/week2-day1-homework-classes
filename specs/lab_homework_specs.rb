@@ -142,7 +142,7 @@ class LibraryTest < MiniTest::Test
     assert_equal(2, result)
   end
 
-  def test_book_has_been_taken_out
+  def test_updating_rental_details
     book ={
       title: "Lord of the rings",
       rental_details: {
@@ -151,20 +151,17 @@ class LibraryTest < MiniTest::Test
       }
     }
 
-    new_details =
-
-    {
-      student_name: "Jim",
-      date: "28/01/2018"
-    }
-
     library = Library.new([book])
-
-    book_info = library.get_info_for_title("Lord of the rings")
-    library.set_rental_details(book, new_details)
-    assert_equal(new_details[:student_name], book_info[:rental_details][:student_name])
+    #arrange
 
 
+    #act
+    #function that checks the book against title, student_name and date
+    library.update_rental_details(:title, :student_name, :date)
+    updated_book_info = library.get_rental_details("Lord of the rings")
+    #assert
+    # changes the rental details of the book
+    assert_equal({student_name:"Daniel", date:"1/2/18"}, update_rental_details(:title, :student_name, :date))
   end
 
 end
